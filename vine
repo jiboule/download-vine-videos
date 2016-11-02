@@ -2,10 +2,6 @@
 
 require_once 'vendor/autoload.php';
 
-function ddump($m) {
-    dump($m);exit();
-}
-
 use Symfony\Component\ClassLoader\Psr4ClassLoader;
 use Symfony\Component\Console\Application;
 

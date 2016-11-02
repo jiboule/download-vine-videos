@@ -13,6 +13,8 @@ Just clone the repo and install the composer dependencies
 In a terminal with php cli :
 
     cd download-vine-videos
-    php app.php
+    php vine get-videos <userId> <downloadDirectory>
     
-The command will ask the user id and the folder where you want to download the videos.
+### Exemple
+    
+    php vine get-videos 1234 /home/user/downloads/my-vine-videos

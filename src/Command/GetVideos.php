@@ -6,10 +6,10 @@ use App\Vine\UserTimeline;
 use App\Vine\Video;
 use GuzzleHttp\Client;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
-use Symfony\Component\Console\Question\Question;
 
 class GetVideos extends Command
 {
@@ -43,32 +43,21 @@ class GetVideos extends Command
     protected function configure()
     {
         $this
-            ->setName('app:get-videos')
+            ->setName('get-videos')
             ->setDescription('Get the videos.')
+            ->addArgument('userId', InputArgument::REQUIRED, 'Vine user id')
+            ->addArgument('donwloadDir', InputArgument::REQUIRED, 'Download directory')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $helper = $this->getHelper('question');
-        $userIdQuestion = new Question('Please enter the id of the vine user : ');
+        $this->userId = (int) $input->getArgument('userId');
+        $this->downloadDir = (string) $input->getArgument('donwloadDir');
 
-        $userId = (int) $helper->ask($input, $output, $userIdQuestion);
-
-        if (!$userId) {
-            throw new \Exception('You must specify a valid user id');
+        if (!is_dir($this->downloadDir)) {
+            throw new \Exception(sprintf('"%s" is not a valid directory', $this->downloadDir));
         }
-
-        $this->userId = $userId;
-
-        $downloadDirQuestion = new Question('Please enter the download path : ');
-        $downloadDir = (string) $helper->ask($input, $output, $downloadDirQuestion);
-
-        if (!is_dir($downloadDir)) {
-            throw new \Exception(sprintf('"%s" is not a valid directory', $downloadDir));
-        }
-
-        $this->downloadDir = $downloadDir;
 
         $this->client = new Client([
             'base_uri' => self::VINE_URI_API,
