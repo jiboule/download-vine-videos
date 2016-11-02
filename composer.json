@@ -1,0 +1,8 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^6.2",
+        "symfony/class-loader": "^3.1",
+        "symfony/console": "^3.1",
+        "symfony/var-dumper": "^3.1"
+    }
+}
