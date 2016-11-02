@@ -1,4 +1,4 @@
-# download-vine-videos
+# Download all your vine videos
 
 As vine is shutting down, download all your videos to your computer with a simple command !
 
