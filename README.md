@@ -4,7 +4,7 @@ As vine is shutting down, download all your videos to your computer with a simpl
 
 ## Installation
 
-Just clone the repo and install the composer dependencies
+Just clone the repo and install the dependencies with [Composer](https://getcomposer.org/)
 
     composer install
     
