@@ -6,13 +6,13 @@ As vine is shutting down, download all your videos to your computer with a simpl
 
 Just clone the repo and install the dependencies with [Composer](https://getcomposer.org/)
 
+    cd <repo-path>
     composer install
     
 ## Usage
 
-In a terminal with php cli :
+Execute the following command in the root folder (you'll need to have PHP Cli installed)
 
-    cd download-vine-videos
     php vine get-videos <userId> <downloadDirectory>
     
 ### Exemple
